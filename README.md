@@ -4,7 +4,7 @@ Um repo que busca construir uma busca eficiente para achar filmes de um dataset 
 
 ## Como rodar (Etapa 1)
 
-Dois processos, dois terminais. Ainda **não** há busca real nem conversa entre frontend e API.
+Dois processos, dois terminais. Ainda **não** há busca real. A API já libera CORS para `http://localhost:5173` (o React ainda não chama o `/search`).
 
 ### Backend (FastAPI)
 
