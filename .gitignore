@@ -1,0 +1,18 @@
+# Python
+backend/.venv/
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# Node
+node_modules/
+frontend/dist/
+
+# Dataset / embeddings (kept local, not versioned)
+*.csv
+*.npy
+.env
+
+# OS
+.DS_Store
