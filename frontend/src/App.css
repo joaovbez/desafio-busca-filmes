@@ -33,6 +33,30 @@
   cursor: pointer;
 }
 
-.search-form button:hover {
+.search-form button:hover:not(:disabled) {
   background: #333;
+}
+
+.search-form button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.status {
+  margin: 1rem 0 0;
+}
+
+.status.error {
+  color: #b00020;
+}
+
+.json {
+  margin: 1.25rem 0 0;
+  padding: 1rem;
+  overflow: auto;
+  text-align: left;
+  font-size: 0.85rem;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 6px;
 }

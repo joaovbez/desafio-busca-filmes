@@ -4,7 +4,7 @@ Um repo que busca construir uma busca eficiente para achar filmes de um dataset 
 
 ## Como rodar (Etapa 1)
 
-Dois processos, dois terminais. Ainda **não** há busca real. A API já libera CORS para `http://localhost:5173`. O React tem a caixa de busca, mas **ainda não** chama o `/search`.
+Dois processos, dois terminais. Ainda **não** há busca real (o JSON é stub). O React chama `GET /search` e mostra a resposta na tela.
 
 ### Backend (FastAPI)
 
@@ -28,4 +28,4 @@ npm install
 npm run dev
 ```
 
-Página: [http://localhost:5173](http://localhost:5173) (caixa + botão; ainda sem `fetch`).
+Página: [http://localhost:5173](http://localhost:5173) — busque qualquer texto e veja o JSON stub. Os dois processos precisam estar no ar.
