@@ -47,3 +47,14 @@ def rank_lexical(
         movie.model_copy(update={"score": score}) for score, movie in scored
     ]
     return ranked, True
+
+
+def find_anchor(title: str) -> MovieResult | None:
+    ranked, used = rank_lexical(MOVIES, title)
+    if used and ranked:
+        return ranked[0]
+    needle = title.strip().lower()
+    for movie in MOVIES:
+        if movie.title.lower() == needle:
+            return movie
+    return None

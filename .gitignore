@@ -12,6 +12,7 @@ frontend/dist/
 # Dataset / embeddings (kept local, not versioned)
 *.csv
 *.npy
+*.npz
 .env
 
 # Editor (local)

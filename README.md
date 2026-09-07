@@ -20,7 +20,7 @@ pip install -r requirements.txt
 uvicorn main:app --reload --port 8000
 ```
 
-No terminal deve aparecer algo como `loaded 4803 movies`.
+No terminal deve aparecer algo como `loaded 4803 movies`. A primeira busca semântica baixa o modelo MiniLM e calcula os embeddings (grava `backend/data/embeddings.npz`); as seguintes reutilizam o cache.
 
 API e Swagger: [http://localhost:8000/docs](http://localhost:8000/docs)
 
