@@ -1,5 +1,6 @@
-from models import EMPTY_RANKING, MovieResult, ParsedQuery, SearchResponse
+from models import MovieResult, ParsedQuery, RankingInfo, SearchResponse
 from services.catalog import MOVIES
+from services.lexical import rank_lexical
 from services.parser import parse_query
 
 
@@ -41,10 +42,19 @@ def apply_hard_filters(
 
 def search_movies(q: str, limit: int) -> SearchResponse:
     parsed = parse_query(q)
-    results = apply_hard_filters(MOVIES, parsed)[:limit]
+    candidates = apply_hard_filters(MOVIES, parsed)
+    
+    used_lexical = False
+    if parsed.free_text:
+        candidates, used_lexical = rank_lexical(candidates, parsed.free_text)
+    
     return SearchResponse(
         query=q,
         parsed=parsed,
-        ranking=EMPTY_RANKING,
-        results=results,
+        ranking=RankingInfo(
+            used_lexical=used_lexical,
+            used_semantic=False,
+            used_rrf=False,
+        ),
+        results=candidates[:limit],
     )
