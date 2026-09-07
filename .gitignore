@@ -14,5 +14,9 @@ frontend/dist/
 *.npy
 .env
 
+# Editor (local)
+.vscode/
+backend/pyrightconfig.json
+
 # OS
 .DS_Store
