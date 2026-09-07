@@ -28,10 +28,12 @@ TMDB_GENRES = {
 }
 
 SYSTEM_PROMPT = """Você extrai restrições de uma busca de filmes.
-Responda só pelo schema. Use gêneros TMDB em inglês da descrição do campo.
+Responda só pelo schema. Gêneros TMDB em inglês, como na descrição do campo.
 Décadas: "anos 80" → year_from 1980 e year_to 1989.
 Não invente filtro que a pessoa não pediu.
-Tema vago da história (final triste, viagem no espaço) vai em free_text, não em gênero.
+Tema da história vai em free_text, não em gênero.
+free_text e anchor devem estar em inglês (títulos e sinopses do TMDB).
+Não traduza a query inteira: só o texto livre / título âncora.
 """
 
 
@@ -79,7 +81,6 @@ def parse_query(q: str) -> ParsedQuery:
             response_format=ParsedQuery,
         )
         parsed = completion.choices[0].message.parsed
-        print("parsed", parsed)
         if parsed is None:
             return _fallback(q)
         return _sanitize(parsed)

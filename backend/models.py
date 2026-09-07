@@ -33,13 +33,19 @@ class ParsedQuery(BaseModel):
     )
     free_text: str = Field(
         description=(
-            "Texto livre que não virou filtro: título, tema da sinopse, etc. "
+            "Texto livre em INGLÊS (idioma do TMDB): título conhecido em inglês "
+            "(Cidade de Deus → City of God; Inception permanece Inception) "
+            "ou tema da sinopse (final triste → sad ending / tragic ending). "
+            "Não repita gênero, década nem nota. "
             "Vazio se a query for só filtro ou só similar_to."
         )
     )
     anchor: Optional[str] = Field(
         default=None,
-        description="Título do filme âncora quando intent é similar_to.",
+        description=(
+            "Título do filme âncora em INGLÊS como no TMDB, "
+            "quando intent é similar_to."
+        ),
     )
 
 
