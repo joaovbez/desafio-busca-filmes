@@ -79,6 +79,7 @@ def parse_query(q: str) -> ParsedQuery:
             response_format=ParsedQuery,
         )
         parsed = completion.choices[0].message.parsed
+        print("parsed", parsed)
         if parsed is None:
             return _fallback(q)
         return _sanitize(parsed)
