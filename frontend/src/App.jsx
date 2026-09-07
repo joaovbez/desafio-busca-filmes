@@ -8,7 +8,10 @@ function App() {
 
   return (
     <main className="page">
-      <h1>Busca de filmes</h1>
+      <header className="page__intro">
+        <h1>Busca de filmes</h1>
+        <p>Pesquise por título, gênero ou o que você tiver em mente.</p>
+      </header>
       <SearchForm
         query={query}
         onQueryChange={setQuery}
