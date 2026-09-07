@@ -65,6 +65,41 @@
   color: #b91c1c;
 }
 
+.parsed {
+  margin: 1.25rem 0 0;
+  padding: 0.85rem 1rem;
+  text-align: left;
+  background: #fff;
+  border: 1px solid #e7e5e4;
+  border-radius: 10px;
+}
+
+.parsed__label {
+  margin: 0 0 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 650;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #78716c;
+}
+
+.parsed__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.parsed__chips li {
+  padding: 0.2rem 0.55rem;
+  font-size: 0.8rem;
+  color: #1c1917;
+  background: #f5f2eb;
+  border-radius: 999px;
+}
+
 .results {
   margin-top: 1.75rem;
 }

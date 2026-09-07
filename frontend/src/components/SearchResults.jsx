@@ -1,4 +1,5 @@
 import { MovieCard } from './MovieCard.jsx'
+import { ParsedInsight } from './ParsedInsight.jsx'
 
 export function SearchResults({ result, error, loading }) {
   if (error) {
@@ -14,11 +15,17 @@ export function SearchResults({ result, error, loading }) {
   }
 
   if (result.results.length === 0) {
-    return <p className="status">Nenhum filme encontrado.</p>
+    return (
+      <>
+        <ParsedInsight parsed={result.parsed} />
+        <p className="status">Nenhum filme encontrado.</p>
+      </>
+    )
   }
 
   return (
     <section className="results" aria-live="polite">
+      <ParsedInsight parsed={result.parsed} />
       <p className="results__count">
         {result.results.length}{' '}
         {result.results.length === 1 ? 'filme' : 'filmes'}
