@@ -2,9 +2,11 @@
 
 Um repo que busca construir uma busca eficiente para achar filmes de um dataset específico.
 
-## Como rodar (Etapa 1)
+## Como rodar
 
-Dois processos, dois terminais. Ainda **não** há busca real (o JSON é stub). O React chama `GET /search` e mostra a resposta na tela.
+Dois processos, dois terminais. O `/search` devolve filmes reais do CSV, ainda **sem** busca inteligente: qualquer `q` retorna os mais bem avaliados.
+
+O arquivo `tmdb_5000_movies.csv` fica na **raiz** do repositório (não vai para o Git).
 
 ### Backend (FastAPI)
 
@@ -16,9 +18,9 @@ pip install -r requirements.txt
 uvicorn main:app --reload --port 8000
 ```
 
-API e Swagger: [http://localhost:8000/docs](http://localhost:8000/docs)
+No terminal deve aparecer algo como `loaded 4803 movies`.
 
-Teste o `GET /search` com algum `q` (ex.: `Inception`). A query volta no JSON; o filme da lista é um stub, não veio do CSV.
+API e Swagger: [http://localhost:8000/docs](http://localhost:8000/docs)
 
 ### Frontend (Vite)
 
@@ -28,4 +30,4 @@ npm install
 npm run dev
 ```
 
-Página: [http://localhost:5173](http://localhost:5173) — busque qualquer texto e veja o JSON stub. Os dois processos precisam estar no ar.
+Página: [http://localhost:5173](http://localhost:5173). Os dois processos precisam estar no ar.
