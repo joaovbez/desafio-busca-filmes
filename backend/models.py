@@ -1,16 +1,46 @@
-from typing import Optional
+from typing import Literal, Optional
 
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 
 class ParsedQuery(BaseModel):
-    intent: str
-    genres: list[str]
-    year_from: Optional[int]
-    year_to: Optional[int]
-    min_rating: Optional[float]
-    free_text: str
-    anchor: Optional[str]
+    intent: Literal["search", "similar_to"] = Field(
+        description=(
+            "similar_to se a pessoa pede filmes parecidos com um título conhecido; "
+            "caso contrário search"
+        )
+    )
+    genres: list[str] = Field(
+        description=(
+            "Gêneros no vocabulário TMDB em inglês "
+            "(Action, Adventure, Animation, Comedy, Crime, Documentary, Drama, "
+            "Family, Fantasy, Foreign, History, Horror, Music, Mystery, Romance, "
+            "Science Fiction, TV Movie, Thriller, War, Western). "
+            "Lista vazia se a query não restringe gênero."
+        )
+    )
+    year_from: Optional[int] = Field(
+        default=None,
+        description="Ano inicial (inclusivo). Anos 80 → 1980. Sem período → null.",
+    )
+    year_to: Optional[int] = Field(
+        default=None,
+        description="Ano final (inclusivo). Anos 80 → 1989. Sem período → null.",
+    )
+    min_rating: Optional[float] = Field(
+        default=None,
+        description="Nota mínima (0–10) se a pessoa pediu rating/nota acima de X.",
+    )
+    free_text: str = Field(
+        description=(
+            "Texto livre que não virou filtro: título, tema da sinopse, etc. "
+            "Vazio se a query for só filtro ou só similar_to."
+        )
+    )
+    anchor: Optional[str] = Field(
+        default=None,
+        description="Título do filme âncora quando intent é similar_to.",
+    )
 
 
 class RankingInfo(BaseModel):
